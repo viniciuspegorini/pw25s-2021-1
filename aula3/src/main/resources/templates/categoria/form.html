@@ -30,8 +30,12 @@
 
         <div class="row">
           <div class="form-group">
-            <label for="nome">Nome</label>
+            <label for="nome">Nome *</label>
             <input th:type="text" class="form-control" th:field="*{nome}"  />
+
+            <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="text-danger">
+            </span>
+
           </div>
         </div>
 

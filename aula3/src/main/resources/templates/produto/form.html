@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Index</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+  <link rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+        integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+        crossorigin="anonymous">
+  <link rel="stylesheet"
+        href="https://unpkg.com/shards-ui@latest/dist/css/shards.min.css">
+</head>
+<body>
+<div class="container my-5">
+  <h1> Formulário de Cadastro de Produto </h1>
+  <div class="row">
+    <form th:method="post" th:action="@{/produto}" th:object="${produto}">
+      <div class="row">
+        <div class="form-group">
+          <label for="id">Código</label>
+          <input th:type="text" class="form-control" th:field="*{id}" readonly/>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          <label for="nome">Nome *</label>
+          <input th:type="text" class="form-control" th:field="*{nome}"  />
+          <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="text-danger">
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          <label for="descricao">Descrição *</label>
+          <textarea rows="5" cols="30" class="form-control" th:field="*{descricao}"> </textarea>
+          <span th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}" class="text-danger">
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          <label for="valor">Valor *</label>
+          <input th:type="text" class="form-control" th:field="*{valor}"  />
+          <span th:if="${#fields.hasErrors('valor')}" th:errors="*{valor}" class="text-danger">
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          <label for="categoria">Categoria *</label>
+          <select class="form-control" th:field="*{categoria}"> id name value
+            <option value=""> (selecione) </option>
+            <option th:each="categoria: ${categorias}"
+                    th:value="${categoria.id}"
+                    th:text="${categoria.nome}"
+                    >...</option>
+          </select>
+          <span th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}" class="text-danger">
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          <label for="marca">Marca *</label>
+          <select class="form-control" th:field="*{marca}">
+            <option value=""> (selecione) </option>
+            <option th:each="marca: ${marcas}"
+                    th:value="${marca.id}"
+                    th:text="${marca.nome}"
+            >...</option>
+          </select>
+          <span th:if="${#fields.hasErrors('marca')}" th:errors="*{marca}" class="text-danger">
+          </span>
+        </div>
+      </div>
+
+
+
+      <div class="row">
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>

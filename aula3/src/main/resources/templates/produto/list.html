@@ -14,7 +14,26 @@
 <body>
 <div class="container my-5">
     <h1>Lista de Produtos</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <div th:if="${!#strings.isEmpty(sucesso)}" class="alert alert-success">
+                <i class="fa fa-check-circle"></i>
+                <span th:text="${sucesso}">Mensagem de sucesso!</span>
+            </div>
+            <div th:if="${!#strings.isEmpty(erro)}" class="alert alert-danger">
+                <i class="fa fa-trash"></i>
+                <span th:text="${erro}">Mensagem de erro!</span>
+            </div>
+        </div>
+    </div>
 
+
+    <a class="btn btn-primary" th:href="@{/}">
+        <i class="fas fa-home"></i>
+    </a>
+    <a class="btn btn-primary" th:href="@{/produto/new}">
+        <i class="fas fa-plus"></i> Novo
+    </a>
     <table class="table table-striped table-responsive-md">
         <thead>
         <tr>
@@ -34,10 +53,18 @@
             <td style="text-align: right; padding-right: 20px" th:text="'R$ ' + ${#numbers.formatDecimal(produto.valor,3,'POINT',2,'COMMA')}"></td>
             <td th:text="${produto.categoria.nome}"></td>
             <td th:text="${produto.marca.nome}"></td>
-            <!-- EDITAR -->
-            <td> </td>
-            <!-- REMOVER -->
-            <td> </td>
+            <td>
+                <a th:href="@{/produto/{id}(id=${produto.id})}" class="btn btn-primary">
+                    <i class="fas fa-edit ml-2"></i>
+                </a>
+            </td>
+            <td>
+                <form th:method="delete" th:action="@{/produto/{id}?_method=DELETE(id=${produto.id})}">
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-trash ml-2"></i>
+                    </button>
+                </form>
+            </td>
         </tr>
         </tbody>
     </table> <!-- FIM TABLE -->

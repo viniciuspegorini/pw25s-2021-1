@@ -6,6 +6,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -20,13 +22,15 @@ public class Produto implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
+	@NotEmpty(message = "O campo nome deve ser preenchido.")
 	@Column(length = 100, nullable = false)
 	private String nome;
 	
 	@Column(length = 1024, nullable = false)
 	private String descricao;
-	
+
+	@NotNull(message = "O campo valor não pode ser nulo.")
 	@Column(nullable = false)
 	private Double valor; 
 	
