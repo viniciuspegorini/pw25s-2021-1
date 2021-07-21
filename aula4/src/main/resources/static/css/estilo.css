@@ -1,0 +1,46 @@
+.ut-layout-page {
+  position: relative;
+  overflow-x: hidden;
+  width: 100%;
+  min-height: 100%;
+  padding-bottom: 60px;
+}
+
+.ut-layout-footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 20px;
+  margin: 0;
+  border-top: 1px solid #eeeeee;
+  transition: all 0.5s;
+}
+.ut-layout-content {
+  position: relative;
+  margin: 0;
+  margin-top: 50px; 
+  transition: all 0.5s;
+}
+@media (min-width: 992px) {
+  .ut-layout-content.is-toggled {
+    margin-left: 0;
+  }
+}
+@media (min-width: 992px) {
+  .ut-layout-content {
+    margin-left: 210px;
+    margin-right: 100px;
+  }
+}
+.page-header {
+  padding-bottom: 8px;
+  margin: 150px 0 18px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+footer {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+}

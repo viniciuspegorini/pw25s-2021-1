@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<title>UTFPR</title>
+
+	<link rel="shortcut icon" th:href="@{/images/favicon.ico}"/>
+
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css}"/>
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap-datepicker/1.9.0/dist/css/bootstrap-datepicker.min.css}"/>
+	<link rel="stylesheet" th:href="@{/webjars/sweetalert2/10.15.5/dist/sweetalert2.min.css}"/>
+	<link rel="stylesheet" th:href="@{/webjars/fontawesome/4.7.0/css/font-awesome.min.css}"/>
+
+	<link rel="stylesheet" th:href="@{/css/estilo.css}"/>
+
+	<th:block layout:fragment="css"></th:block>
+</head>
+
+<body>
+<header>
+	<!-- Fixed navbar -->
+	<div th:replace="layout/fragments/nav-bar :: navbar"></div>
+
+	<!--
+    <div th:insert="layout/fragments/nav-bar :: navbar"></div>
+    <div th:replace="layout/fragments/nav-bar :: navbar"></div>
+    <div th:include="layout/fragments/nav-bar :: navbar"></div>
+    -->
+</header>
+
+<div class="container" style="margin-top:100px;">
+	<section class="ut-layout-content" layout:fragment="conteudo">
+		As páginas serão carregadas aqui...
+	</section>
+</div>
+<footer class="">
+	<div th:replace="layout/fragments/footer :: footer"></div>
+</footer>
+<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap-datepicker/1.9.0/dist/js/bootstrap-datepicker.min.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap-datepicker/1.9.0/dist/locales/bootstrap-datepicker.pt-BR.min.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/sweetalert2/10.15.5/dist/sweetalert2.min.js}"></script>
+
+
+<script type="text/javascript">
+	$('.datepicker').datepicker({
+		format: 'dd/mm/yyyy',
+		autoclose: true
+	});
+</script>
+
+<th:block layout:fragment="javascript"></th:block>
+</body>
+</html>

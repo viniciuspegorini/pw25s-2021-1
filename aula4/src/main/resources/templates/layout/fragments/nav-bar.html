@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" th:fragment="navbar">
+    <a class="navbar-brand  hidden-xs" href="/"> <img
+            class="small-logo" alt="UTFPR"
+            th:src="@{/images/logo.png}" />
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarCollapse" aria-controls="navbarCollapse"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" th:classappend="${#httpServletRequest.getRequestURI().startsWith('/home') ? 'active' : ''}">
+                <a class="nav-link" th:href="@{/home}">
+                    <i class="fa fa-home"></i> Principal
+                </a>
+            </li>
+
+            <li class="nav-item" th:classappend="${#httpServletRequest.getRequestURI().startsWith('/categoria') ? 'active' : ''}">
+                <a class="nav-link" th:href="@{/categoria}">
+                    <i class="fa fa-book"></i> Categorias
+                </a>
+            </li>
+
+            <li class="nav-item" th:classappend="${#httpServletRequest.getRequestURI().startsWith('/marca') ? 'active' : ''}">
+                <a class="nav-link" th:href="@{/marca}">
+                    <i class="fa fa-book"></i> Marca
+                </a>
+            </li>
+
+            <li class="nav-item" th:classappend="${#httpServletRequest.getRequestURI().startsWith('/produto') ? 'active' : ''}">
+                <a class="nav-link" th:href="@{/produto}">
+                    <i class="fa fa-book"></i> Produto
+                </a>
+            </li>
+        </ul>
+
+        <div sec:authorize="hasRole('ROLE_ADMIN')">
+            Esse texto só vai aparecer para o ADMIN.
+        </div>
+
+        <div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_USER')">
+            Esse texto vai aparecer para o ADMIN e USER.
+        </div>
+
+        <span> <i class="fa fa-user"></i>
+					Olá <span sec:authentication="name"></span>!
+				</span>
+        &nbsp;&nbsp;
+        <a th:href="@{/logout}" class="btn btn-outline-danger">
+            <i class="fa fa-sign-out-alt"></i>
+        </a>
+
+    </div>
+</nav>
+</html>
