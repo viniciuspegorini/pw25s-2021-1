@@ -38,23 +38,6 @@
                 </a>
             </li>
         </ul>
-
-        <div sec:authorize="hasRole('ROLE_ADMIN')">
-            Esse texto só vai aparecer para o ADMIN.
-        </div>
-
-        <div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_USER')">
-            Esse texto vai aparecer para o ADMIN e USER.
-        </div>
-
-        <span> <i class="fa fa-user"></i>
-					Olá <span sec:authentication="name"></span>!
-				</span>
-        &nbsp;&nbsp;
-        <a th:href="@{/logout}" class="btn btn-outline-danger">
-            <i class="fa fa-sign-out-alt"></i>
-        </a>
-
     </div>
 </nav>
 </html>
