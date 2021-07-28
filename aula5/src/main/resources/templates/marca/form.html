@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout-padrao}">
+<head>
+</head>
+<body>
+<section layout:fragment="conteudo">
+    <h2>Formulário de Cadastro - Marca</h2>
+    <div class="row g-5">
+        <div class="col-md-7 col-lg-8">
+            <form th:action="@{/marca}" method="post"
+                  th:object="${marca}">
+                <div class="row">
+                    <div class="form-group">
+                        <label for="id">Código</label>
+                        <input type="text" class="form-control"
+                               th:field="*{id}" readonly/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" class="form-control"
+                               th:field="*{nome}"/>
+                        <span th:if="${#fields.hasErrors('nome')}"
+                              th:errors="*{nome}"
+                              class="text-danger"
+                        ></span>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+                <div class="row">
+                    <div class="form-group">
+                        <a class="btn btn-outline-warning" th:href="@{/categoria}">
+                            <i class="fa fa-minus-circle ml-2"></i> Cancelar
+                        </a> &nbsp;
+                        <button class="btn btn-success btn-salvar" type="submit">
+                            <i class="fa fa-check-circle ml-2"></i> Salvar
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div> <!-- FIM div row -->
+</section>
+</body>
+</html>
+
+
+
+
+
+
+
+

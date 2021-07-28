@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
+<html lang="pt"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout-padrao}">
 <head>
 </head>
 <body>
 <section layout:fragment="conteudo">
-    <h1>Lista de Categorias</h1>
+    <h1>Lista de Produtos</h1>
     <div class="row">
         <div class="col-md-6">
             <div th:if="${!#strings.isEmpty(sucesso)}"
@@ -25,7 +27,7 @@
     <a class="btn btn-primary" th:href="@{/}">
         <i class="fa fa-home"></i>
     </a>
-    <a class="btn btn-primary" th:href="@{/categoria/new}">
+    <a class="btn btn-primary" th:href="@{/produto/new}">
         <i class="fa fa-plus"></i> Novo
     </a>
 
@@ -34,24 +36,29 @@
         <tr>
             <th>Código</th>
             <th>Nome</th>
+            <th>Valor</th>
+            <th>Categoria</th>
+            <th>Marca</th>
             <th>Editar</th>
             <th>Remover</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="categoria: ${categorias}">
-            <td th:text="${categoria.id}">código</td>
-            <td th:text="${categoria.nome}">nome</td>
+        <tr th:each="produto : ${produtos}">
+            <td th:text="${produto.id}">código</td>
+            <td th:text="${produto.nome}">nome</td>
+            <td th:text="'R$ ' + ${#numbers.formatDecimal(produto.valor,3,'POINT',2,'COMMA')}"></td>
+            <td th:text="${produto.categoria.nome}"></td>
+            <td th:text="${produto.marca.nome}"></td>
             <!-- EDITAR -->
             <td>
-                <a th:href="@{/categoria/{id}(id=${categoria.id})}" class="btn btn-primary">
+                <a th:href="@{/produto/{id}(id=${produto.id})}" class="btn btn-primary">
                     <i class="fa fa-edit ml-2"></i>
                 </a>
             </td>
             <!-- REMOVER -->
             <td>
-                <form th:method="post"
-                      th:action="@{/categoria/{id}?_method=DELETE(id=${categoria.id})}">
+                <form th:method="delete" th:action="@{/produto/{id}?_method=DELETE(id=${produto.id})}">
                     <button type="submit" class="btn btn-danger">
                         <i class="fa fa-trash ml-2"></i>
                     </button>
@@ -63,6 +70,3 @@
 </section>
 </body>
 </html>
-        
-        
-        
