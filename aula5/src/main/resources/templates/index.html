@@ -13,7 +13,13 @@
         <div class="container-fluid py-5">
             <h1 class="display-5 fw-bold">Bem vindo</h1>
             <p class="col-md-8 fs-4">Aplicação desenvolvida na disciplina Programação para Web - PW25S.</p>
-
+            <h2>Spring Security: </h2>
+            <div sec:authorize="hasRole('ROLE_USER')">Esse texto vai aparecer para o usuário com permissão USER!</div>
+            <div sec:authorize="hasRole('ROLE_ADMIN')">Esse texto vai aparecer para o usuário com permissão ADMIN!</div>
+            <div sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">
+                Esse texto vai aparecer para o usuário com permissão ADMIN ou USER!
+            </div>
+            <div sec:authorize="isAuthenticated()">Esse texto vai aparecer para o usuário autenticado!</div>
         </div>
     </div>
 </section>

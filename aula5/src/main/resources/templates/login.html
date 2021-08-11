@@ -26,7 +26,7 @@
         </div>
 
         <!-- Login Form -->
-        <form th:action="@{/login}" method="POST">
+        <form th:action="@{/login}" th:method="POST">
             <input type="text" id="username" class="fadeIn second" name="username" placeholder="usuário">
 
             <input type="password" id="password" class="fadeIn third" name="password" placeholder="senha">
@@ -44,12 +44,7 @@
 
     </div>
 </div>
-
 <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-
-<!--
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
 </body>
 </html>

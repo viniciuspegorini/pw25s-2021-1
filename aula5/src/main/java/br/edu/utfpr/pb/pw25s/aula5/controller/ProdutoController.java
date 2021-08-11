@@ -26,6 +26,12 @@ public class ProdutoController {
 	private MarcaService marcaService;
 
 	
+	@GetMapping("/categoria/{id}")
+	public String listPorCategoria(@PathVariable Long id, Model model) {
+		model.addAttribute("produtos", produtoService.findAllByCategoriaId(id));
+		return "produto/list";
+	}
+
 	@GetMapping
 	public String list(Model model) {
 		model.addAttribute("produtos", produtoService.findAll());

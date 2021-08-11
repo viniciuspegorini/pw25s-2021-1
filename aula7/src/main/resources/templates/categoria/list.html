@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout-padrao}">
+<head>
+</head>
+<body>
+<section layout:fragment="conteudo">
+    <h1>Lista de Categorias</h1>
+
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCadastro"
+            onclick="newEntity()">
+        <i class="fa fa-plus"></i> Novo
+    </button>
+    <table id="table-data"
+           class="table table-sm table-striped table-bordered nowrap"
+           style="width: 100%">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Remover</th>
+        </tr>
+        </thead>
+    </table> <!-- FIM TABLE -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalCadastro" tabindex="-1" aria-labelledby="modalCadastroLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="frm" name="frm" method="POST" th:action="@{/categoria}">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCadastroLabel">Cadastro de Categoria</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="modal-body">
+                            <input type="hidden" id="id" name="id"/>
+                            <div class="form-group">
+                                <label for="nome">Nome</label>
+                                <input type="text" class="form-control" id="nome" name="nome" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success">Salvar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</section>
+<th:block layout:fragment="javascript">
+    <script type="text/javascript" th:src="@{/js/crud-categoria.js}"></script>
+</th:block>
+</body>
+</html>
+        
+        
+        

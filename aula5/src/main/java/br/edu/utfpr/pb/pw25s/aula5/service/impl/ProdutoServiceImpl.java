@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProdutoServiceImpl extends CrudServiceImpl<Produto, Long>  implements ProdutoService {
 
@@ -18,4 +20,8 @@ public class ProdutoServiceImpl extends CrudServiceImpl<Produto, Long>  implemen
 		return produtoRepository;
 	}
 
+	@Override
+	public List<Produto> findAllByCategoriaId(Long id) {
+		return produtoRepository.findAllByCategoriaId(id);
+	}
 }
